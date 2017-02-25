@@ -2,6 +2,8 @@ package cn.net.wujun.springboot.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,9 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @SpringBootApplication
-public class Application {
+public class Application extends SpringBootServletInitializer {
 
-    @GetMapping("/")
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        builder.sources(this.getClass());
+        return super.configure(builder);
+    }
+
+    @GetMapping("/home")
     String home() {
         return "Hello World!";
     }

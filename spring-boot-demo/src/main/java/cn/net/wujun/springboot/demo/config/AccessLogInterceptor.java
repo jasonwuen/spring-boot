@@ -26,7 +26,7 @@ import java.util.Enumeration;
 @Aspect
 @Component
 @Order(100)
-public class AccessInterceptor {
+public class AccessLogInterceptor {
 
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
