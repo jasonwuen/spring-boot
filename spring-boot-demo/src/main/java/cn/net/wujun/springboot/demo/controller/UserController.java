@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
@@ -45,7 +46,9 @@ public class UserController {
     }
 
     @GetMapping("/list")
-    public Map<String, Object> getTableData(int pageNum, int pageSize, String username) {
+    public Map<String, Object> getTableData(@RequestParam(value = "pageNum", required = false,
+            defaultValue = "1") int pageNum, @RequestParam(value = "pageNum", required = false,
+            defaultValue = "5") int pageSize, String username) {
         return userService.getTableData(pageNum, pageSize, username);
     }
 

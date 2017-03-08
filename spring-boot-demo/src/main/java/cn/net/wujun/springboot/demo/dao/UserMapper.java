@@ -4,6 +4,7 @@ import cn.net.wujun.springboot.demo.entity.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -28,12 +29,15 @@ public interface UserMapper {
     int delete(Long id);
 
     @Results({
+            @Result(property = "comId", column = "com_id"),
             @Result(property = "gmtCreate", column = "gmt_create")
     })
-    @Select("SELECT * FROM tbl_user WHERE id = #{id}")
-    User getById(Long id);
+
+    @Select("SELECT * FROM tbl_user WHERE id = #{id} and com_id = #{comId}")
+    User getById(@Param("id") Long id, @Param("comId") Long comId);
 
     @Results({
+            @Result(property = "comId", column = "com_id"),
             @Result(property = "gmtCreate", column = "gmt_create")
     })
     @Select("SELECT * FROM tbl_user")

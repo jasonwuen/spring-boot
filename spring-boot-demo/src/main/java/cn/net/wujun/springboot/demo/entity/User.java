@@ -16,6 +16,8 @@ public class User {
 
     private Byte sex;
 
+    private Long comId;
+
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date gmtCreate;
 
@@ -49,5 +51,13 @@ public class User {
 
     public void setGmtCreate(Date gmtCreate) {
         this.gmtCreate = gmtCreate;
+    }
+
+    public Long getComId() {
+        return comId;
+    }
+
+    public void setComId(Long comId) {
+        this.comId = comId;
     }
 }

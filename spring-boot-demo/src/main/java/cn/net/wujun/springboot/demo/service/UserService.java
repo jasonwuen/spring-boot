@@ -23,7 +23,7 @@ public class UserService {
     RoleService roleService;
 
     public User getById(Long id) {
-        return userMapper.getById(id);
+        return userMapper.getById(id, 1000L);
     }
 
     public String hello(String test) {
